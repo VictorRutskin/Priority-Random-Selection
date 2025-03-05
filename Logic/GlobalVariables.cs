@@ -13,7 +13,7 @@
             (3, 10, 5),
         };
 
-        public static List<int> availablePriorities = ProbabilityList.Select(p => p.Priority).ToList();
+        public static List<int> AvailablePriorities = ProbabilityList.Select(p => p.Priority).ToList();
 
         public static void ValidateGlobalVariables()
         {
@@ -65,6 +65,11 @@
                 if (amount is < 1 or > 10_000)
                     errors.Add($"{errors.Count + 1}. Amount of items {amount} must be between 1 and 10,000.");
             }
+        }
+
+        public static void ResetAvailablePriorities()
+        {
+            AvailablePriorities = ProbabilityList.Select(p => p.Priority).ToList();
         }
     }
 }

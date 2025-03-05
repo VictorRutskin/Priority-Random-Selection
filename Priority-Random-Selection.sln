@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Priority-Random-Selection",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{B8323FFF-94C8-4ED0-89BF-CA9370356EDB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unit-Tests", "Unit tests\Unit-Tests.csproj", "{72CDDCD2-576B-4EB3-8DB8-0F90FCC4664E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B8323FFF-94C8-4ED0-89BF-CA9370356EDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8323FFF-94C8-4ED0-89BF-CA9370356EDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8323FFF-94C8-4ED0-89BF-CA9370356EDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72CDDCD2-576B-4EB3-8DB8-0F90FCC4664E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72CDDCD2-576B-4EB3-8DB8-0F90FCC4664E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72CDDCD2-576B-4EB3-8DB8-0F90FCC4664E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72CDDCD2-576B-4EB3-8DB8-0F90FCC4664E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,36 +1,11 @@
-﻿using System;
+﻿using Logic.Models;
+
 namespace Logic
 {
     public static class Probability
-    {
-        private static Random random = new Random();
-
-        public static Item SelectItem()
-        {
-            if (!MainLogic.items.Any()) return null!;
-
-            // If any priority is still available, continue - else stop
-            while (GlobalVariables.availablePriorities.Any())
-            {
-                int selectedPriority = DeterminePriority(GlobalVariables.availablePriorities);
-                List<Item> filteredItems = MainLogic.items.Where(item => item.GetPriority() == selectedPriority).ToList();
-
-                if (filteredItems.Count > 0)
-                {
-                    Item selectedItem = filteredItems[random.Next(filteredItems.Count)];
-                    MainLogic.items.Remove(selectedItem);
-                    return selectedItem;
-                }
-
-                // Remove priority from available list if no items found
-                GlobalVariables.availablePriorities.Remove(selectedPriority);
-            }
-
-            return null!;
-        }
-
+    {   
         // Get Priority based on probability
-        private static int DeterminePriority(List<int> availablePriorities)
+        public static int DeterminePriority(List<int> availablePriorities, Random random)
         {
             var filteredProbabilities = GlobalVariables.ProbabilityList.Where(p => availablePriorities.Contains(p.Priority)).ToList();
 
