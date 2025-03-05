@@ -2,22 +2,29 @@
 {
     public class GlobalVariables
     {
-        // How many times to run the selection
+        // How many times to run the selection, default value is 7
         public int TimesToRun { get; set; } = 7;
         // List of probabilities
         public List<(int Priority, double Chance, int AmountOfItems)> ProbabilityList { get; set; }
         // List of available priorities for efficient priority selection
-        public List<int> AvailablePriorities { get; private set; }
+        public List<int> AvailablePriorities { get; private set; } = new();
 
-        public GlobalVariables()
+
+        public GlobalVariables(List<(int Priority, double Chance, int AmountOfItems)>? probabilityList = null, int timesToRun = 7)
         {
-            ProbabilityList = new List<(int, double, int)>
-        {
-            // Priority, Chance, Amount of items
-            (1, 60, 5),
-            (2, 30, 5),
-            (3, 10, 5),
-        };
+            // If probabilityList is null, implement default values
+            if (probabilityList == null)
+            {
+                probabilityList = new List<(int, double, int)>
+                {
+                    (1, 60, 5),
+                    (2, 30, 5),
+                    (3, 10, 5),
+                };
+                throw new ArgumentNullException(nameof(probabilityList));
+            }
+            ProbabilityList = probabilityList;
+            TimesToRun = timesToRun;
             ResetAvailablePriorities();
         }
 
