@@ -21,7 +21,6 @@
                     (2, 30, 5),
                     (3, 10, 5),
                 };
-                throw new ArgumentNullException(nameof(probabilityList));
             }
             ProbabilityList = probabilityList;
             TimesToRun = timesToRun;
