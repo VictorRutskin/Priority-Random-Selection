@@ -1,5 +1,11 @@
 # Priority-Random-Selection
 
+## Objective
+- The purpose of the project is to create a console application that will randomly select an item from a list of 15 objects. Each object will have a field called "Priority", which will be an integer value. Specifically, five of the objects will have a priority of 1, five will have a priority of 2, and five will have a priority of 3.
+- The application will run 7 times, and for each run, the program will randomly select one of the 15 objects based on their priority. The probability of selecting an object with priority 1 will be 60%, priority 2 will be 30%, and priority 3 will be 10%.
+- After each run, the program will print the selected object along with its priority, and remove it from the list. The goal of the project is to demonstrate the ability to select objects from a list based on specific criteria, and use probability to determine the likelihood of selecting certain objects.
+
+
 ## Overview
 This project implements a probability-based item selection system in C#. The system uses predefined priority and probability values to randomly select items, ensuring fairness while maintaining a weighted selection process.
 
