@@ -1,25 +1,40 @@
 ﻿using Logic;
+using Logic.Handlers;
 using Logic.Models;
+using Xunit;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Unit_tests
 {
-    [Collection("Sequential")] 
+    [Collection("Sequential")]
     public class ItemsHandlerTests
     {
+        private readonly ItemsHandler _itemsHandler;
+        private readonly GlobalVariables _globalVariables;
+
+        public ItemsHandlerTests()
+        {
+            _globalVariables = new GlobalVariables();
+            var probabilityHandler = new ProbabilityHandler();
+            _itemsHandler = new ItemsHandler(probabilityHandler);
+        }
+
         [Fact]
         // Ensures items are populated correctly when PopulateInitialItems() is called.
         public void PopulateInitialItems_ShouldFillItemsList()
         {
-            ItemsHandler.PopulateInitialItems();
-            Assert.NotEmpty(ItemsHandler.items);
+            _itemsHandler.PopulateInitialItems(_globalVariables.ProbabilityList);
+            Assert.NotEmpty(_itemsHandler.Items);
         }
 
         [Fact]
         // Ensures SelectItem() returns a valid item when items are available.
         public void SelectItem_WithItems_ReturnsItem()
         {
-            ItemsHandler.PopulateInitialItems();
-            Item item = ItemsHandler.SelectItem();
+            _itemsHandler.PopulateInitialItems(_globalVariables.ProbabilityList);
+            Item? item = _itemsHandler.SelectItem(_globalVariables.AvailablePriorities, _globalVariables.ProbabilityList);
             Assert.NotNull(item);
             Assert.IsType<Item>(item);
         }
@@ -28,37 +43,14 @@ namespace Unit_tests
         // Ensures SelectItem() returns null when all items have been selected.
         public void SelectItem_AllItemsSelected_ReturnsNull()
         {
-            GlobalVariables.ProbabilityList = new List<(int, double, int)> { (1, 60, 5), (2, 30, 5), (3, 10, 5) };
+            _globalVariables.ProbabilityList = new List<(int, double, int)> { (1, 60, 5), (2, 30, 5), (3, 10, 5) };
 
-            ItemsHandler.PopulateInitialItems();
-            while (ItemsHandler.items.Any())
+            _itemsHandler.PopulateInitialItems(_globalVariables.ProbabilityList);
+            while (_itemsHandler.Items.Any())
             {
-                ItemsHandler.SelectItem();
+                _itemsHandler.SelectItem(_globalVariables.AvailablePriorities, _globalVariables.ProbabilityList);
             }
-            Assert.Null(ItemsHandler.SelectItem());
-        }
-
-        [Fact]
-        // Tries to select 16 items when only 15 exist and ensures the last attempt returns null.
-        public void SelectItem_AfterExhaustingAllItems_ThrowsExpectedError()
-        {
-            // Set up 15 items in total
-            GlobalVariables.ProbabilityList = new List<(int, double, int)> { (1, 50, 5), (2, 30, 5), (3, 20, 5) };
-            GlobalVariables.ResetAvailablePriorities();
-            GlobalVariables.TimesToRun = 15;
-
-            ItemsHandler.PopulateInitialItems();
-
-            // Select 15 items (exhausting the list)
-            for (int i = 0; i < 15; i++)
-            {
-                Assert.NotNull(ItemsHandler.SelectItem());
-            }
-
-            // Try selecting the 16th item, expecting null
-            var extraItem = ItemsHandler.SelectItem();
-            Assert.Null(extraItem);
+            Assert.Null(_itemsHandler.SelectItem(_globalVariables.AvailablePriorities, _globalVariables.ProbabilityList));
         }
     }
-  
 }

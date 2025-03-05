@@ -1,12 +1,10 @@
-﻿using Logic;
-using Logic.Models;
+﻿using Logic.Models;
 
 namespace Unit_tests
 {
-    [Collection("Sequential")] 
+    [Collection("Sequential")]
     public class ItemTests
     {
-
         [Fact]
         // Checks if an item is created with the correct name and priority.
         public void Item_Creation_SetsCorrectProperties()

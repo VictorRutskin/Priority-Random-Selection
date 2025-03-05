@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35825.156 d17.13
+VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Priority-Random-Selection", "Priority-Random-Selection\Priority-Random-Selection.csproj", "{CE9A0709-4CB7-477D-B013-C253D5858793}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{B8323FFF-94C8-4ED0-89BF-CA9370356EDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unit-Tests", "Unit tests\Unit-Tests.csproj", "{72CDDCD2-576B-4EB3-8DB8-0F90FCC4664E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Unit tests\Tests.csproj", "{72CDDCD2-576B-4EB3-8DB8-0F90FCC4664E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
