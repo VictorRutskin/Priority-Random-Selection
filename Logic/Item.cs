@@ -1,17 +1,14 @@
 ﻿namespace Logic
 {
-    class Item
+    public class Item
     {
         private string _name;
         private int _priority;
 
-        private const int _minPriorityValue = 1;
-        private const int _maxriorityValue = 3;
-
         public Item(string name, int priority)
         {
-            SetName(name);
-            SetPriority(priority);
+            _name = name;
+            SetPriority(priority); // Priority is set by the function to include validation
         }
 
         public string GetName()
@@ -31,15 +28,16 @@
 
         public void SetPriority(int priority)
         {
-            // validate priority is between acceptable range
-            if (priority < _minPriorityValue || priority > _maxriorityValue)
+            // Validate priority is between acceptable range
+            if (priority < MainLogic.GetMinPriorityValue() || priority > MainLogic.GetMaxPriorityValue())
             {
-                // will need to handle this exception somehow
+                // Will need to handle this exception somehow
             }
             else
             {
                 _priority = priority;
             }
         }
+
     }
 }
